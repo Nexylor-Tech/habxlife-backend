@@ -1,10 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from ..schemas import UserCredentials, UserProfileUpdate, HabitGenRequest, OnboardingUpdate, RefreshTokenRequest
 from ..services import auth_service
-from ..services import ai_service
 from ..deps import get_current_user_id
 from ..db import supabase 
-from ..config import settings
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -34,9 +32,6 @@ def refresh_token(req: RefreshTokenRequest):
 def update_profile(user_id: str, update: UserProfileUpdate):
     return auth_service.update_profile(user_id, update)
 
-@router.post("/generate-habits")
-def generate_habits(req: HabitGenRequest):
-    return ai_service.generate_habits(req.goal)
 
 @router.post("/onboarding/update")
 def update_onboarding(update: OnboardingUpdate, user = Depends(get_current_user_id)):

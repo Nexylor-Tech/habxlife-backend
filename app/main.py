@@ -1,7 +1,7 @@
 from fastapi import FastAPI 
 from fastapi.middleware.cors import CORSMiddleware
 from .config import settings
-from .routers import auth, tasks, payment
+from .routers import auth, tasks, payment, ai
 
 def create_app() -> FastAPI:
     app = FastAPI(title="FocusAI", version="1.0.0")
@@ -17,6 +17,7 @@ def create_app() -> FastAPI:
     app.include_router(auth.router)
     app.include_router(tasks.router)
     app.include_router(payment.router)
+    app.include_router(ai.router)
 
     return app
 

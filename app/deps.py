@@ -4,7 +4,6 @@ from .db import  supabase
 from datetime import datetime, timezone 
 from supabase import create_client
 from .config import settings
-from zoneinfo import ZoneInfo
 
 async def get_user_token(authorization: str = Header(...)) -> str:
     if not authorization.startswith("Bearer "):
