@@ -9,8 +9,12 @@ class Settings(BaseSettings):
     SUPABASE_URL: AnyUrl
     SUPABASE_API_KEY: SecretStr
     SUPABASE_SERVICE_ROLE_KEY: SecretStr | None = None
+    GOOGLE_API_KEY: SecretStr | None = None
+    RAZORPAY_API_KEY: SecretStr | None = None
+    RAZORPAY_TEST_KEY_SECRET: SecretStr | None = None
     ALLOW_ORIGNINS: list[str] = ["*"]
-
+    FRONTEND_URL: str = "http://localhost:3000" 
+    
     @field_validator("ALLOW_ORIGNINS", mode="before")
     def parse_allow_origins(cls, v):
         if isinstance(v, str):
