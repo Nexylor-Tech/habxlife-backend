@@ -16,7 +16,6 @@ class UserProfileUpdate(BaseModel):
     password: Optional[str] = None
     old_password: Optional[str] = None
     theme: Optional[str] = None
-    timezone: Optional[str] = None
 
 #Refresh Login
 class RefreshTokenRequest(BaseModel):

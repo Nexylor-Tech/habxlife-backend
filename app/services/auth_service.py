@@ -18,7 +18,6 @@ def signup_with_password(creds: UserCredentials) -> Dict[str, Any]:
                 'onboarding_completed': False,
                 'current_step': 'goal',
                 'theme': 'light',
-                'timezone': 'UTC'
             }).execute()
         except Exception as e:
             print('Account creation failed')
@@ -75,12 +74,6 @@ def update_profile(user: str, update: UserProfileUpdate):
     if update.theme:
         supabase.table('profiles').update({
             'theme': update.theme
-        }).eq('id', user).execute()
-    return {'message': 'Updated'}
-
-    if update.timezone:
-        supabase.table('profiles').update({
-            'timezone': update.timezone
         }).eq('id', user).execute()
     return {'message': 'Updated'}
 
